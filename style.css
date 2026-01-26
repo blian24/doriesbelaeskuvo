@@ -1,0 +1,217 @@
+:root {
+    --sidebar-bg: #8E7C68;
+    /* Elegant brownish/taupe ribbon color */
+    --text-color-light: #fff;
+    --text-color-dark: #333;
+    --hover-color: #A69076;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    /* Prevent scrolling on main page if content fits */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    height: 100%;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-link:hover {
+    background-color: var(--hover-color);
+    padding-left: 20px;
+    /* Slide effect */
+    border-radius: 4px;
+}
+
+.menu-link.active {
+    font-weight: 700;
+    border-bottom: 2px solid white;
+}
+
+/* Main Content Styling */
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Default center alignment */
+}
+
+/* Page Specific Backgrounds */
+.bg-home {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background.jpg');
+    align-items: flex-start;
+    /* Home text is at the top */
+}
+
+.bg-location {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('retimajor.jpg');
+    /* Darker overlay */
+}
+
+/* Location Page Styles */
+.location-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.map-container iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+}
+
+.location-info {
+    color: white;
+    text-align: center;
+    height: 337px;
+    /* approx 75% of 450px */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    gap: 20px;
+    /* Space between elements */
+}
+
+.location-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    /* Increased size */
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.location-info p {
+    font-size: 2rem;
+    /* Increased size */
+    margin: 10px 0;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.location-link {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.location-link:hover {
+    color: var(--hover-color);
+}
+
+.hero-text {
+    margin-top: 30px;
+    /* Position slightly down from the very top */
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 2s ease-in;
+}
+
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin: 0;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Optional: semi-transparent background for better readability */
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .menu-items {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .menu-link {
+        border-bottom: none;
+        margin-bottom: 0;
+        font-size: 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+}
