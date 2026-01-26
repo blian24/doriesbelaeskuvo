@@ -384,4 +384,44 @@ body {
         height: 300px;
         /* Smaller map on mobile */
     }
+
+    /* Fix Index Page Mobile Layout */
+    .bg-home {
+        background-position: center;
+        justify-content: center;
+        /* Center content vertically if possible */
+        min-height: 100vh;
+        /* Ensure full height */
+    }
+
+    .bottom-text {
+        position: relative;
+        /* Change from absolute to avoid overlap */
+        bottom: auto;
+        margin-top: 40px;
+        padding-bottom: 20px;
+    }
+
+    .bottom-text p {
+        font-size: 1.5rem;
+        /* Smaller font for mobile */
+    }
+
+    .countdown {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .time-box {
+        min-width: 60px;
+        padding: 10px;
+    }
+
+    .time-box span:first-child {
+        font-size: 1.5rem;
+    }
+
+    .time-box .label {
+        font-size: 0.8rem;
+    }
 }
