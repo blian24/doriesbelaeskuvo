@@ -101,6 +101,11 @@ body {
     align-items: center;
 }
 
+.bg-szallas {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('szallas.jpg');
+    align-items: center;
+}
+
 /* Location Page Styles */
 .location-container {
     display: flex;
