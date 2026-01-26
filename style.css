@@ -257,6 +257,12 @@ body {
     }
 }
 
+.extra-large {
+    font-size: 30rem !important;
+    /* Override default h1 size */
+    padding: 30px 60px !important;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
@@ -424,5 +430,11 @@ body {
 
     .time-box .label {
         font-size: 0.8rem;
+    }
+
+    .extra-large {
+        font-size: 5rem !important;
+        /* Scale down for mobile */
+        padding: 20px !important;
     }
 }
