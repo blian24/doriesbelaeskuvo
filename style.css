@@ -91,8 +91,8 @@ body {
 /* Page Specific Backgrounds */
 .bg-home {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background.jpg');
-    align-items: flex-start;
-    /* Home text is at the top */
+    flex-direction: column;
+    align-items: center;
 }
 
 .bg-location {
@@ -181,6 +181,57 @@ body {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: fadeIn 2s ease-in;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: auto;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    flex-wrap: wrap;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 80px;
+    backdrop-filter: blur(5px);
+}
+
+.time-box span:first-child {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+.time-box .label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.bottom-text {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 3s ease-in;
+}
+
+.bottom-text p {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    margin: 0;
 }
 
 .hero-text h1 {

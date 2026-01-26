@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Lato', sans-serif;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #8E7C68;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #A69076;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Wedding QR Code</h1>
+        <canvas id="qr-canvas"></canvas>
+        <button onclick="downloadQR()">Download PNG</button>
+    </div>
+
+    <!-- Load the logo explicitly to ensure it's available for the canvas -->
+    <img id="logo-img" src="qr_logo.png" style="display:none;" onload="initQR()">
+
+    <script>
+        const URL = "https://blian24.github.io/doriesbelaeskuvo/index.html";
+
+        function initQR() {
+            const canvas = document.getElementById('qr-canvas');
+            const logo = document.getElementById('logo-img');
+
+            // Generate QR Code
+            QRCode.toCanvas(canvas, URL, {
+                width: 400,
+                margin: 2,
+                color: {
+                    dark: "#333333",
+                    light: "#ffffff"
+                },
+                errorCorrectionLevel: 'H' // High error correction to allow for logo coverage
+            }, function (error) {
+                if (error) console.error(error);
+
+                // Draw Logo in the center
+                const ctx = canvas.getContext('2d');
+                const logoSize = canvas.width * 0.22; // Logo size (22% of QR)
+                const center = canvas.width / 2;
+                const x = center - (logoSize / 2);
+                const y = center - (logoSize / 2);
+
+                // Draw a white circular background for the logo
+                ctx.beginPath();
+                ctx.arc(center, center, (logoSize / 2) + 5, 0, 2 * Math.PI);
+                ctx.fillStyle = "#ffffff";
+                ctx.fill();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#f0f0f0";
+                ctx.stroke();
+
+                // Draw the logo clipped to a circle
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(center, center, logoSize / 2, 0, 2 * Math.PI);
+                ctx.closePath();
+                ctx.clip();
+                ctx.drawImage(logo, x, y, logoSize, logoSize);
+                ctx.restore();
+            });
+        }
+
+        function downloadQR() {
+            const canvas = document.getElementById('qr-canvas');
+            const link = document.createElement('a');
+            link.download = 'wedding_qr_code.png';
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        }
+    </script>
+</body>
+
+</html>
