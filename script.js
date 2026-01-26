@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Countdown Logic
     const countdownElement = document.getElementById('countdown');
     if (countdownElement) {
-        const targetDate = new Date('2026-09-12T00:00:00').getTime();
+        const targetDate = new Date('2026-09-12T00:00:00+01:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             if (distance < 0) {
-                countdownElement.innerHTML = "<h1>Eljött a nagy nap!</h1>";
+                countdownElement.innerHTML = "<h1>Big pak dai!</h1>";
                 return;
             }
 
