@@ -96,6 +96,11 @@ body {
     /* Darker overlay */
 }
 
+.bg-program {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('program.jpg');
+    align-items: center;
+}
+
 /* Location Page Styles */
 .location-container {
     display: flex;
