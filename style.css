@@ -1,5 +1,5 @@
 :root {
-    --sidebar-bg: #8E7C68;
+    --sidebar-bg: #D8AD83;
     /* Elegant brownish/taupe ribbon color */
     --text-color-light: #fff;
     --text-color-dark: #333;
@@ -31,6 +31,21 @@ body {
 .logo-container {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.sidebar-flower {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 320px;
+    max-width: none;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-flower:hover {
+    transform: scale(1.05) rotate(5deg);
+    cursor: pointer;
 }
 
 .logo {
@@ -295,6 +310,11 @@ body {
         top: 20px;
         right: 20px;
         z-index: 100;
+    }
+
+    .sidebar-flower {
+        display: none;
+        /* Hide on mobile for now as layout is different */
     }
 
     .hamburger span {
