@@ -66,6 +66,12 @@
         <div class="bottom-text">
             <p>2026.09.12. - Rétimajor</p>
         </div>
+
+        <!-- Play button overlay (shown when autoplay is blocked) -->
+        <div id="playButton"
+            style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 30px 50px; border-radius: 15px; cursor: pointer; font-size: 24px; font-family: 'Playfair Display', serif; z-index: 9999; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: all 0.3s ease;">
+            🔊 Click to Play Sound
+        </div>
     </main>
 
     <script src="script.js"></script>
@@ -88,36 +94,32 @@
             audio.volume = 0.7; // Set volume to 70%
 
             let hasPlayed = false;
+            const playButton = document.getElementById('playButton');
 
             // Try to autoplay
             audio.play().then(function () {
-                console.log('Audio playing:', selectedAudio);
+                console.log('Audio autoplayed:', selectedAudio);
                 hasPlayed = true;
             }).catch(function (error) {
-                console.log('Autoplay blocked, will play on user interaction:', error);
+                console.log('Autoplay blocked, showing play button...');
 
-                // If autoplay fails, play on first user interaction
-                function playOnInteraction() {
+                // Show the play button
+                playButton.style.display = 'block';
+
+                // Play on button click
+                playButton.addEventListener('click', function () {
                     if (!hasPlayed) {
-                        // Create a NEW audio object after user interaction
                         const userAudio = new Audio(selectedAudio);
                         userAudio.volume = 0.7;
                         userAudio.play().then(function () {
-                            console.log('Audio played after user interaction:', selectedAudio);
+                            console.log('Audio played after user clicked button:', selectedAudio);
                             hasPlayed = true;
+                            playButton.style.display = 'none'; // Hide button after playing
                         }).catch(function (err) {
                             console.error('Failed to play audio:', err);
                         });
-                        // Remove listeners after first play
-                        document.removeEventListener('click', playOnInteraction);
-                        document.removeEventListener('touchstart', playOnInteraction);
-                        document.removeEventListener('keydown', playOnInteraction);
                     }
-                }
-
-                document.addEventListener('click', playOnInteraction);
-                document.addEventListener('touchstart', playOnInteraction);
-                document.addEventListener('keydown', playOnInteraction);
+                });
             });
         });
     </script>
