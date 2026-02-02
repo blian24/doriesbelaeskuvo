@@ -83,10 +83,36 @@
             const randomIndex = Math.floor(Math.random() * audioFiles.length);
             const selectedAudio = audioFiles[randomIndex];
 
-            // Create and play the audio
+            // Create the audio element
             const audio = new Audio(selectedAudio);
-            audio.play().catch(function (error) {
-                console.log('Audio playback failed:', error);
+            audio.volume = 0.7; // Set volume to 70%
+
+            let hasPlayed = false;
+
+            // Try to autoplay
+            audio.play().then(function () {
+                console.log('Audio playing:', selectedAudio);
+                hasPlayed = true;
+            }).catch(function (error) {
+                console.log('Autoplay blocked, will play on user interaction:', error);
+
+                // If autoplay fails, play on first user interaction
+                function playOnInteraction() {
+                    if (!hasPlayed) {
+                        audio.play().then(function () {
+                            console.log('Audio playing after user interaction:', selectedAudio);
+                            hasPlayed = true;
+                        });
+                        // Remove listeners after first play
+                        document.removeEventListener('click', playOnInteraction);
+                        document.removeEventListener('touchstart', playOnInteraction);
+                        document.removeEventListener('keydown', playOnInteraction);
+                    }
+                }
+
+                document.addEventListener('click', playOnInteraction);
+                document.addEventListener('touchstart', playOnInteraction);
+                document.addEventListener('keydown', playOnInteraction);
             });
         });
     </script>
