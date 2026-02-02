@@ -69,6 +69,27 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+        // Play a random audio file from the bigpakdai-sounds folder
+        window.addEventListener('DOMContentLoaded', function () {
+            const audioFiles = [
+                'bigpakdai-sounds/bigpakdai01.mp3',
+                'bigpakdai-sounds/bigpakdai02.mp3',
+                'bigpakdai-sounds/bigpakdai03.mp3',
+                'bigpakdai-sounds/bigpakdai04.mp3'
+            ];
+
+            // Select a random audio file
+            const randomIndex = Math.floor(Math.random() * audioFiles.length);
+            const selectedAudio = audioFiles[randomIndex];
+
+            // Create and play the audio
+            const audio = new Audio(selectedAudio);
+            audio.play().catch(function (error) {
+                console.log('Audio playback failed:', error);
+            });
+        });
+    </script>
 
 </body>
 
