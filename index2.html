@@ -99,9 +99,14 @@
                 // If autoplay fails, play on first user interaction
                 function playOnInteraction() {
                     if (!hasPlayed) {
-                        audio.play().then(function () {
-                            console.log('Audio playing after user interaction:', selectedAudio);
+                        // Create a NEW audio object after user interaction
+                        const userAudio = new Audio(selectedAudio);
+                        userAudio.volume = 0.7;
+                        userAudio.play().then(function () {
+                            console.log('Audio played after user interaction:', selectedAudio);
                             hasPlayed = true;
+                        }).catch(function (err) {
+                            console.error('Failed to play audio:', err);
                         });
                         // Remove listeners after first play
                         document.removeEventListener('click', playOnInteraction);
