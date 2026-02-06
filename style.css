@@ -273,7 +273,7 @@ body {
 }
 
 .extra-large {
-    font-size: 30rem !important;
+    font-size: 15rem !important;
     /* Override default h1 size */
     padding: 30px 60px !important;
 }

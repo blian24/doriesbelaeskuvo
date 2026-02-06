@@ -76,58 +76,64 @@
 
     <script src="script.js"></script>
     <script>
-        // Play a random audio file from the bigpakdai-sounds folder
+        // Play audio files sequentially from the bigpakdai-sounds folder
         window.addEventListener('DOMContentLoaded', function () {
             const audioFiles = [
                 'bigpakdai-sounds/bigpakdai01.mp3',
                 'bigpakdai-sounds/bigpakdai02.mp3',
                 'bigpakdai-sounds/bigpakdai03.mp3',
                 'bigpakdai-sounds/bigpakdai04.mp3',
+                'bigpakdai-sounds/bigpakdai11.mp3',
                 'bigpakdai-sounds/bigpakdai05.mp3',
                 'bigpakdai-sounds/bigpakdai06.mp3',
                 'bigpakdai-sounds/bigpakdai07.mp3',
                 'bigpakdai-sounds/bigpakdai08.mp3',
                 'bigpakdai-sounds/bigpakdai09.mp3',
                 'bigpakdai-sounds/bigpakdai10.mp3',
-                'bigpakdai-sounds/bigpakdai11.mp3',
                 'bigpakdai-sounds/bigpakdai12.mp3'
             ];
 
-            // Select a random audio file
-            const randomIndex = Math.floor(Math.random() * audioFiles.length);
-            const selectedAudio = audioFiles[randomIndex];
-
-            // Create the audio element
-            const audio = new Audio(selectedAudio);
-            audio.volume = 0.7; // Set volume to 70%
-
-            let hasPlayed = false;
+            let currentIndex = 0;
+            let audio = null;
+            let hasStarted = false;
             const playButton = document.getElementById('playButton');
 
-            // Try to autoplay
-            audio.play().then(function () {
-                console.log('Audio autoplayed:', selectedAudio);
-                hasPlayed = true;
-            }).catch(function (error) {
-                console.log('Autoplay blocked, showing play button...');
+            function playNextAudio() {
+                // Create audio element for current file
+                audio = new Audio(audioFiles[currentIndex]);
+                audio.volume = 0.7; // Set volume to 70%
 
-                // Show the play button
-                playButton.style.display = 'block';
+                console.log('Playing:', audioFiles[currentIndex]);
 
-                // Play on button click
-                playButton.addEventListener('click', function () {
-                    if (!hasPlayed) {
-                        const userAudio = new Audio(selectedAudio);
-                        userAudio.volume = 0.7;
-                        userAudio.play().then(function () {
-                            console.log('Audio played after user clicked button:', selectedAudio);
-                            hasPlayed = true;
-                            playButton.style.display = 'none'; // Hide button after playing
-                        }).catch(function (err) {
-                            console.error('Failed to play audio:', err);
-                        });
+                // When current audio ends, play the next one (if there are more)
+                audio.addEventListener('ended', function () {
+                    currentIndex++;
+                    if (currentIndex < audioFiles.length) {
+                        playNextAudio();
+                    } else {
+                        console.log('All audio files have been played.');
                     }
                 });
+
+                // Play the audio
+                audio.play().catch(function (error) {
+                    if (!hasStarted) {
+                        console.log('Autoplay blocked, showing play button...');
+                        playButton.style.display = 'block';
+                    }
+                });
+            }
+
+            // Try to autoplay the first file
+            playNextAudio();
+
+            // Play on button click if autoplay was blocked
+            playButton.addEventListener('click', function () {
+                if (!hasStarted) {
+                    hasStarted = true;
+                    playButton.style.display = 'none';
+                    playNextAudio();
+                }
             });
         });
     </script>
