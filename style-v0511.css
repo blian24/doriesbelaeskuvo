@@ -414,9 +414,8 @@ body {
     }
 
     .welcome-text {
-        margin-top: auto;
-        /* pushes this box + countdown + bottom-text to the bottom */
-        margin-bottom: 0;
+        margin-bottom: auto;
+        /* This pushes countdown+bottom-text to the bottom */
         width: calc(100% - 40px);
         max-width: 100%;
         box-sizing: border-box;
