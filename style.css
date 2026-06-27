@@ -316,6 +316,7 @@ body {
     backdrop-filter: blur(5px);
     border-radius: 8px;
     padding: 40px 60px;
+    box-sizing: border-box;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     animation: fadeIn 2s ease-in;
@@ -429,28 +430,36 @@ body {
 .menu-column {
     display: flex;
     flex-direction: column;
+    gap: 20px; /* Space between the glass boxes */
+    flex: 1;
+    max-width: 500px; /* Wider and more airy */
+}
+
+.menu-box {
+    /* Overrides for program-container */
+    padding: 25px 40px;
     gap: 4px;
+    min-width: unset;
+    width: 100%;
+    
     font-family: 'Calibri', sans-serif;
     font-size: 2rem;
-    /* Same as szallas-container */
     line-height: 1.6;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-    flex: 1;
-    max-width: 420px;
 }
 
-.menu-column p {
+.menu-box p {
     margin: 0;
 }
 
-.menu-column p strong {
+.menu-box p strong {
     font-size: 2.2rem;
-    margin-top: 12px;
+    margin-bottom: 8px; /* Space after title */
     display: block;
 }
 
-.menu-column p:first-child strong {
+.menu-box p:first-child strong {
     margin-top: 0;
 }
 
@@ -706,12 +715,17 @@ body {
     }
 
     .menu-column {
-        font-size: 1.4rem;
+        width: 100%;
         max-width: 100%;
-        width: calc(100% - 0px);
+        gap: 15px; /* Less gap between boxes on mobile */
     }
 
-    .menu-column p strong {
+    .menu-box {
+        font-size: 1.4rem;
+        padding: 20px; /* Even less padding on mobile */
+    }
+
+    .menu-box p strong {
         font-size: 1.6rem;
     }
 }
