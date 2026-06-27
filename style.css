@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Calibri', sans-serif;
     display: flex;
     height: 100vh;
     overflow: hidden;
@@ -162,7 +162,7 @@ body {
 }
 
 .location-info h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Calibri', sans-serif;
     font-size: 4rem;
     /* Increased size */
     margin: 0;
@@ -196,6 +196,11 @@ body {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: fadeIn 2s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 0 20px;
 }
 
 .countdown {
@@ -222,7 +227,7 @@ body {
 .time-box span:first-child {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Calibri', sans-serif;
 }
 
 .time-box .label {
@@ -244,20 +249,33 @@ body {
 
 .bottom-text p {
     font-size: 3rem;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Calibri', sans-serif;
     letter-spacing: 2px;
     margin: 0;
 }
 
-.hero-text h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+.quote-container blockquote {
+    font-family: 'Calibri', sans-serif;
+    font-size: 2.8rem;
     margin: 0;
+    line-height: 1.4;
     font-style: italic;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     /* Optional: semi-transparent background for better readability */
-    padding: 20px 40px;
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.welcome-text {
+    font-size: 2.8rem;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
     border-radius: 10px;
+    margin: 0;
+    line-height: 1.5;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes fadeIn {
@@ -375,8 +393,13 @@ body {
         margin-top: 50px;
     }
 
-    .hero-text h1 {
-        font-size: 2rem;
+    .quote-container blockquote {
+        font-size: 1.8rem;
+        padding: 20px;
+    }
+    
+    .welcome-text {
+        font-size: 1.8rem;
         padding: 15px;
     }
 
