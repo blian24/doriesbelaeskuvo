@@ -310,6 +310,108 @@ body {
     padding: 30px 60px !important;
 }
 
+/* Program Page Styles */
+.program-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 40px 60px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 2s ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 400px;
+}
+
+.program-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-family: 'Calibri', sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.4;
+}
+
+.program-time {
+    font-weight: 700;
+    min-width: 90px;
+    /* Fixed width so all times align perfectly */
+}
+
+.program-event {
+    font-weight: 400;
+}
+
+.szallas-container {
+    max-width: unset;
+    /* Width controlled by szallas-layout parent */
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Calibri', sans-serif;
+    font-size: 2rem;
+    line-height: 1.6;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.szallas-container p {
+    margin: 0;
+}
+
+/* Szallas Page Layout */
+.szallas-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 760px;
+    /* Controls overall width of all 3 rows */
+    padding: 20px 40px;
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.szallas-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    /* Matches szallas-layout width */
+}
+
+.szallas-image-box {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    overflow: hidden;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 2s ease-in;
+    flex: 1;
+    /* No max-width - fills to match row width */
+}
+
+.szallas-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.szallas-img-text {
+    font-family: 'Calibri', sans-serif;
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 8px 15px;
+    text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
@@ -510,6 +612,47 @@ body {
         font-size: 8rem !important;
         /* Scale down for mobile */
         padding: 20px !important;
+    }
+
+    /* Program Page Mobile */
+    .program-container {
+        min-width: unset;
+        width: calc(100% - 40px);
+        padding: 25px 30px;
+        gap: 15px;
+    }
+
+    .program-item {
+        font-size: 1.5rem;
+        gap: 20px;
+    }
+
+    .program-time {
+        min-width: 70px;
+    }
+
+    /* Szallas Page Mobile */
+    .szallas-container {
+        font-size: 1.4rem;
+        max-width: unset;
+        width: calc(100% - 40px);
+    }
+
+    /* Szallas Layout Mobile */
+    .szallas-layout {
+        padding: 15px;
+        overflow-y: auto;
+        max-height: 100%;
+    }
+
+    .szallas-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .szallas-image-box {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
