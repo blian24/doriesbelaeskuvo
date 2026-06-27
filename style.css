@@ -197,10 +197,18 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     animation: fadeIn 2s ease-in;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
-    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+.quote-container {
+    width: 750px;
+    max-width: 45%;
+    box-sizing: border-box;
 }
 
 .countdown {
@@ -252,6 +260,11 @@ body {
     font-family: 'Calibri', sans-serif;
     letter-spacing: 2px;
     margin: 0;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 15px 30px;
+    border-radius: 8px;
 }
 
 .quote-container blockquote {
@@ -260,22 +273,23 @@ body {
     margin: 0;
     line-height: 1.4;
     font-style: italic;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Optional: semi-transparent background for better readability */
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
     padding: 30px 40px;
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
 }
 
 .welcome-text {
     font-size: 2.8rem;
-    max-width: 800px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px 30px;
-    border-radius: 10px;
+    width: 750px;
+    max-width: 45%;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 30px 40px;
+    border-radius: 8px;
     margin: 0;
     line-height: 1.5;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes fadeIn {
@@ -391,13 +405,23 @@ body {
 
     .hero-text {
         margin-top: 50px;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .quote-container,
+    .welcome-text {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .quote-container blockquote {
         font-size: 1.8rem;
         padding: 20px;
     }
-    
+
     .welcome-text {
         font-size: 1.8rem;
         padding: 15px;
